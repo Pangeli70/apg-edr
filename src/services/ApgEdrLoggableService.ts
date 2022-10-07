@@ -6,6 +6,7 @@
  * -----------------------------------------------------------------------
  */
 import { Drash, Lgr } from "../../deps.ts";
+import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts";
 
 
 /** 
@@ -21,13 +22,17 @@ export class ApgEdrLoggableService extends Drash.Service {
 
     const logger = new Lgr.ApgLgr(name);
 
+    const loggableReq: IApgEdrLoggableRequest = {
+      logger
+    };
+
     // inject middleware data into the request
-    (<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME] = logger;
+    (<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME] = loggableReq;
 
   }
 
   public runAfterResource(request: Drash.Request, _response: Drash.Response) {
-    const logger = (<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME];
-    (<Lgr.ApgLgr>logger!).flush();
+    const loggableReq = (<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME] as IApgEdrLoggableRequest;
+    loggableReq!.logger!.flush();
   }
 }
