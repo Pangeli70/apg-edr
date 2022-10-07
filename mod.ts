@@ -11,6 +11,7 @@ export * from "./src/resources/ApgEdrResource.ts";
 
 export * from "./src/services/ApgEdrEveryReqService.ts";
 export * from "./src/services/ApgEdrParamsService.ts";
+export * from "./src/services/ApgEdrLoggableService.ts";
 
 export * from "./src/enums/eApgEdrRequestParamSimpleTypes.ts";
 
