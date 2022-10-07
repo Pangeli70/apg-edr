@@ -2,10 +2,11 @@
  * @module [Edr]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.8.0 [APG 2022/04/03]
- * @version 0.9.1 [APG 2022/09/10] Deno Deploy Beta
+ * @version 0.9.1 [APG 2022/09/10] Github Beta
+ * @version 0.9.2 [APG 2022/10/07] Loggable resource
  * -----------------------------------------------------------------------
  */
-import { Drash } from "../deps.ts";
+import { Drash } from "../../deps.ts";
 import { ApgEdrStaticResource } from "./ApgEdrStaticResource.ts";
 
 /** Resource to deliver static files in binary format, stored in public folder */

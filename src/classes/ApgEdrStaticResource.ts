@@ -2,22 +2,19 @@
  * @module [Edr]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.0.1 [APG 2021/02/21]
- * @version 0.8.0 [APG 2022/04/03]
- * @version 0.9.1 [APG 2022/09/10] Deno Deploy Beta
+ * @version 0.8.0 [APG 2022/04/03] Porting to Deno
+ * @version 0.9.1 [APG 2022/09/10] Github Beta
+ * @version 0.9.2 [APG 2022/10/07] Loggable resource
  * -----------------------------------------------------------------------
  */
-import { Drash } from "../deps.ts";
-
-interface IApgEdsStaticResourceCacheableItem {
-  count: number;
-  content: string | Uint8Array;
-  isText: boolean;
-  lastRequest: number;
-}
+import { Drash } from "../../deps.ts";
+import {
+  IApgEdrStaticResourceCacheableItem
+} from "../interfaces/IApgEdrStaticResourceCacheableItem.ts";
 
 const CACHE_EXPIRATION = 1000;
 
-const staticResoucesCache: { [key: string]: IApgEdsStaticResourceCacheableItem } = {};
+const staticResoucesCache: { [key: string]: IApgEdrStaticResourceCacheableItem } = {};
 
 /**
  * Provides static files asyncronously using an in memory cache to speed up the process
@@ -34,7 +31,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
           r = await Deno.readTextFile(aresourceFile);
 
 
-        const staticCacheableItem: IApgEdsStaticResourceCacheableItem = {
+        const staticCacheableItem: IApgEdrStaticResourceCacheableItem = {
           count: 1,
           content: r,
           isText: true,
@@ -44,7 +41,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
       }
       else {
 
-        const staticCacheableItem: IApgEdsStaticResourceCacheableItem = staticResoucesCache[aresourceFile];
+        const staticCacheableItem: IApgEdrStaticResourceCacheableItem = staticResoucesCache[aresourceFile];
         const currentTime = performance.now();
         const deltaTime = currentTime - staticCacheableItem.lastRequest;
 
@@ -80,7 +77,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
 
         staticContent = await Deno.readFile(aresourceFile);
 
-        const staticCacheableItem: IApgEdsStaticResourceCacheableItem = {
+        const staticCacheableItem: IApgEdrStaticResourceCacheableItem = {
           count: 1,
           content: staticContent,
           isText: false,
@@ -91,7 +88,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
       }
       else {
 
-        const staticCacheableItem: IApgEdsStaticResourceCacheableItem = staticResoucesCache[aresourceFile];
+        const staticCacheableItem: IApgEdrStaticResourceCacheableItem = staticResoucesCache[aresourceFile];
         const currentTime = performance.now();
         const deltaTime = currentTime - staticCacheableItem.lastRequest;
 
