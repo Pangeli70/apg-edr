@@ -8,22 +8,17 @@
  */
 import { Drash} from "../../deps.ts";
 import { eApgEdrRequestParamSimpleTypes } from "../enums/eApgEdrRequestParamSimpleTypes.ts";
-import { IApgEdrRequestExt } from "../interfaces/IApgEdrRequestExt.ts";
+import { IApgEdrRequestParams } from "../interfaces/IApgEdrRequestParams.ts";
+import { ApgEdrParamsService } from "../services/ApgEdrParamsService.ts";
 import { TApgEdrSimpleParam } from "../types/TApgEdrSimpleParam.ts";
 
 
 export abstract class ApgEdrResource extends Drash.Resource {
 
-  protected reqExt?: IApgEdrRequestExt;
 
-
-  protected initialize(request: Drash.Request) {
-    this.reqExt = this._getEdsRequest(request);
-  }
-
-  private _getEdsRequest(request: Drash.Request) {
+  getParams(request: Drash.Request) {
     // deno-lint-ignore no-explicit-any
-    return (<IApgEdrRequestExt>(<any>request).reqExt);
+    return (<IApgEdrRequestParams>(<any>request)[ApgEdrParamsService.INJECTED_FIELD_NAME]);
   }
 
   protected getQueryStringParam(

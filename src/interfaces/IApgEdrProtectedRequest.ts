@@ -11,6 +11,7 @@
 import { IApgEdrLoggableRequest } from "./IApgEdrLoggableRequest.ts";
 
 interface IApgAthTokenPayload { 
+  // TODO implement 
   dummy: string;
 }
 

@@ -8,11 +8,10 @@
  * -----------------------------------------------------------------------
  */
 import {Lgr } from '../../deps.ts';
-import { IApgEdrRequestExt } from "./IApgEdrRequestExt.ts";
 
 
-/** The additional data used by Drash service and that is carried by the Drash.Request */
-export interface IApgEdrLoggableRequest extends IApgEdrRequestExt {
+/** Additional data used by Drash service and that is carried by the Drash.Request */
+export interface IApgEdrLoggableRequest {
 
   /** The reference to the injected request logger */
   logger: Lgr.ApgLgr;

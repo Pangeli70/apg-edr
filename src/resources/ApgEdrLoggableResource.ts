@@ -7,6 +7,7 @@
  */
 import { Drash, Uts, Lgr, Rst } from "../../deps.ts"
 import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts";
+import { ApgEdrLoggableService } from "../services/ApgEdrLoggableService.ts";
 import { ApgEdrResource } from "./ApgEdrResource.ts"
 
 
@@ -17,15 +18,17 @@ import { ApgEdrResource } from "./ApgEdrResource.ts"
 export abstract class ApgEdrLoggableResource extends ApgEdrResource {
 
   protected loggable?: Lgr.ApgLgrLoggable;
-  protected loggableReq?: IApgEdrLoggableRequest; 
 
   protected logInit(aimportMetaUrl: string, request: Drash.Request) {
     const className = new Uts.ApgUtsMetaUrl(aimportMetaUrl).FileName;
-    super.initialize(request);
-    if (<any>this.reqExt && (<any>this.reqExt!).logger) { 
-      this.loggableReq = <IApgEdrLoggableRequest><any>this.reqExt;
-      this.loggable = new Lgr.ApgLgrLoggable(className, this.loggableReq.logger);
-    }
+    const loggableReq = this.#getlogger(request);
+    this.loggable = new Lgr.ApgLgrLoggable(className, loggableReq.logger);
+  }
+
+
+  #getlogger(request: Drash.Request) {
+    // deno-lint-ignore no-explicit-any
+    return (<IApgEdrLoggableRequest>(<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME]);
   }
 
   protected logBegin(amethodName: string, amessage?: string) {

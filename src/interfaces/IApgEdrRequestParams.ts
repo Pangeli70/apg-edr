@@ -6,13 +6,11 @@
  * -----------------------------------------------------------------------
  */
 
-/** This data is filled by the Edr custom Drash Service for each request when
+/** This data is filled by the Edr Prams Drash Service for each request when
  * the before resurce event is handled
  */
-export interface IApgEdrRequestExt
+export interface IApgEdrRequestParams
 {
-    /** The current route url */
-    url: string;
     /** All the parses query string params */
     queryStringParams: { [key: string]: string };
     /** All the parsed body params */
@@ -23,6 +21,5 @@ export interface IApgEdrRequestExt
     cookieParams: { [key: string]: string };
     /** Date time of the server when the request has arrived */
     submission: Date;
-    /** The high resolutio time when the request has started to be processed on server */
-    startTime: number;
+
 }
