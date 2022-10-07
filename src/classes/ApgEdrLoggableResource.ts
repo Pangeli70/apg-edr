@@ -14,7 +14,7 @@ import { ApgEdrResource } from "./ApgEdrResource.ts"
 /**
  * A base Resource with logging capabilities
  */
-export abstract class ApgEdsLoggableResource extends ApgEdrResource {
+export abstract class ApgEdrLoggableResource extends ApgEdrResource {
 
   protected loggable?: Lgr.ApgLgrLoggable;
   protected loggableReq?: IApgEdrLoggableRequest; 
