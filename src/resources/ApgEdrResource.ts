@@ -31,7 +31,7 @@ export abstract class ApgEdrResource extends Drash.Resource {
 
     const param = request.queryParam(aname);
     if (param && typeof (param) == 'string') {
-      r = this._checkSimpleParamType(param, atype);
+      r = this.#checkSimpleParamType(param, atype);
     }
     return r;
   }
@@ -47,7 +47,7 @@ export abstract class ApgEdrResource extends Drash.Resource {
     const param = request.bodyParam(aname);
 
     if (param && typeof (param) == 'string') {
-      r = this._checkSimpleParamType(param, atype);
+      r = this.#checkSimpleParamType(param, atype);
     }
 
     return r;
@@ -65,13 +65,31 @@ export abstract class ApgEdrResource extends Drash.Resource {
     const param = request.getCookie(aname);
 
     if (param && typeof (param) == 'string') {
-      r = this._checkSimpleParamType(param, atype);
+      r = this.#checkSimpleParamType(param, atype);
     }
 
     return r;
   }
 
-  private _checkSimpleParamType(
+
+  protected getSimplePathParam(
+    request: Drash.Request,
+    aname: string,
+    atype: eApgEdrRequestParamSimpleTypes
+  ): TApgEdrSimpleParam {
+
+    let r: TApgEdrSimpleParam = null;
+
+    const param = request.pathParam(aname);
+
+    if (param && typeof (param) == 'string') {
+      r = this.#checkSimpleParamType(param, atype);
+    }
+
+    return r;
+  }
+
+   #checkSimpleParamType(
     param: string | null,
     atype: eApgEdrRequestParamSimpleTypes
   ): TApgEdrSimpleParam {

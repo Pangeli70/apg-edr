@@ -12,7 +12,7 @@ import { ApgEdrStaticResource } from "./ApgEdrStaticResource.ts";
 /** Deliver static text files stored in public and test folder */
 export class ApgEdrPublicTextFileResource extends ApgEdrStaticResource {
 
-  public paths = [
+  public override paths = [
     "/public/html/.*\.(html)",
     "/public/css/.*\.(css)",
     "/public/js/.*\.(js)",

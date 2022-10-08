@@ -12,7 +12,7 @@ import { ApgEdrStaticResource } from "./ApgEdrStaticResource.ts";
 /** Resource to deliver static files in binary format, stored in public folder */
 export class ApgEdrPublicBinFileResource extends ApgEdrStaticResource {
 
-  public paths = [
+  public override paths = [
     "/public/img/ico/.*\.(ico)",
     "/public/img/jpg/.*\.(jpg|jpeg)",
     "/public/img/png/.*\.(png)",

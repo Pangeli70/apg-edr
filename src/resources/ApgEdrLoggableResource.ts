@@ -10,8 +10,6 @@ import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts"
 import { ApgEdrLoggableService } from "../services/ApgEdrLoggableService.ts";
 import { ApgEdrResource } from "./ApgEdrResource.ts"
 
-
-
 /**
  * A base Resource with logging capabilities
  */
