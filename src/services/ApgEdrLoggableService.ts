@@ -16,7 +16,7 @@ export class ApgEdrLoggableService extends Drash.Service {
 
   public static INJECTED_FIELD_NAME = "ApgEdrLogger";
 
-  public runBeforeResource(request: Drash.Request, _response: Drash.Response) {
+  public override runBeforeResource(request: Drash.Request, _response: Drash.Response) {
 
     const name = `Resource: [${request.url}]`;
 
@@ -31,7 +31,7 @@ export class ApgEdrLoggableService extends Drash.Service {
 
   }
 
-  public runAfterResource(request: Drash.Request, _response: Drash.Response) {
+  public override runAfterResource(request: Drash.Request, _response: Drash.Response) {
     const loggableReq = (<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME] as IApgEdrLoggableRequest;
     loggableReq!.logger!.flush();
   }

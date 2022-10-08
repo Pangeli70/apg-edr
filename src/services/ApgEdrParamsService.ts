@@ -16,7 +16,7 @@ export class ApgEdrParamsService extends Drash.Service {
 
   public static INJECTED_FIELD_NAME = "ApgEdrParams";
   
-  public runBeforeResource(
+  public override runBeforeResource(
     request: Drash.Request,
     _response: Drash.Response)
   {

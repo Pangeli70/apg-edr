@@ -14,7 +14,7 @@ export class ApgEdrEveryReqService extends Drash.Service {
 
     private static _counter = 0;
 
-    public runBeforeResource(
+    public override runBeforeResource(
         request: Drash.Request,
         _response: Drash.Response,
     ): void {
@@ -39,7 +39,7 @@ export class ApgEdrEveryReqService extends Drash.Service {
     /**
      * Run this service after the resource's HTTP method.
      */
-    public runAfterResource(
+    public override runAfterResource(
         request: Drash.Request,
         _response: Drash.Response,
     ): void {
