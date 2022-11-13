@@ -9,7 +9,7 @@
 import { Drash } from "../../deps.ts";
 import { ApgEdrStaticResource } from "./ApgEdrStaticResource.ts";
 
-/** Deliver static text files stored in public and test folder */
+/** Deliver static text files stored in public folder */
 export class ApgEdrPublicTextFileResource extends ApgEdrStaticResource {
 
   public override paths = [
