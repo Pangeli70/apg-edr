@@ -5,10 +5,11 @@
  * @version 0.9.2 [APG 2022/10/07] Github Beta
  * -----------------------------------------------------------------------
  */
-import { Drash, Uts, Lgr, Rst } from "../../deps.ts"
-import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts";
+
+import { Drash, Lgr, Rst, Uts } from "../../deps.ts";
+import { ApgEdrResource } from "./ApgEdrResource.ts";
 import { ApgEdrLoggableService } from "../services/ApgEdrLoggableService.ts";
-import { ApgEdrResource } from "./ApgEdrResource.ts"
+import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts";
 
 /**
  * A base Resource with logging capabilities
@@ -30,7 +31,7 @@ export abstract class ApgEdrLoggableResource extends ApgEdrResource {
   }
 
   protected logBegin(amethodName: string, amessage?: string) {
-    const r = new Rst.ApgRst({message: amessage})
+    const r: Rst.IApgRst = { ok: true, message: amessage };
     this.loggable!.logBegin(amethodName, r);
   }
 
