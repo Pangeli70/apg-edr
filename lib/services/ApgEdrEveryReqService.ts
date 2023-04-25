@@ -1,5 +1,5 @@
 /** ----------------------------------------------------------------------
- * @module [EDR]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.7.1 [APG 2019/08/27]
  * @version 0.9.2 [APG 2022/10/07] Github beta
@@ -28,7 +28,7 @@ export class ApgEdrEveryReqService extends Drash.Service {
 
         const every: IApgEdrEveryRequest = {
             number: ApgEdrEveryReqService._counter,
-            startTime: performance.now(), 
+            startTime: performance.now(),
             submission: new Date()
         };
 

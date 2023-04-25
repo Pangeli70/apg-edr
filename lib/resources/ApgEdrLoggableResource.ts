@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [EDR]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.8.0 [APG 2022/04/23]
  * @version 0.9.2 [APG 2022/10/07] Github Beta

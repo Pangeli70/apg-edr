@@ -11,7 +11,7 @@ import { services } from "./srv/svc.ts";
 import { ApgEdrService } from "./lib/mod.ts";
 
 ApgEdrService.Init({
-  assetsFolder:"/srv/assets/"
+  assetsFolder:"./srv"
 });
 
 const SERVER_INFO = Dir.ApgDirGetServerInfo(Dir.ApgDirEntries[Dir.eApgDirEntriesIds.edr]);

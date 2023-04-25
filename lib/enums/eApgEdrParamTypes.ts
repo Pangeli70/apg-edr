@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [EDS]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.2.0 [APG 2018/06/02]
  * @version 0.5.0 [APG 2018/11/25]

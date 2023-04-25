@@ -1,12 +1,12 @@
 /** -----------------------------------------------------------------------
- * @module [Services]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.8.0 [APG 2022/04/23]
  * @version 0.9.2 [APG 2022/10/07] Github Beta
  * @version 0.9.7 [APG 2023/04/25] Separation of concerns lib/srv
  * -----------------------------------------------------------------------
  */
-import { Drash,  } from "../deps.ts";
+import { Drash, } from "../deps.ts";
 import { IApgEdrRequestParams } from "../interfaces/IApgEdrRequestParams.ts";
 
 
@@ -16,11 +16,10 @@ import { IApgEdrRequestParams } from "../interfaces/IApgEdrRequestParams.ts";
 export class ApgEdrParamsService extends Drash.Service {
 
   public static INJECTED_FIELD_NAME = "ApgEdrParams";
-  
+
   public override runBeforeResource(
     request: Drash.Request,
-    _response: Drash.Response)
-  {
+    _response: Drash.Response) {
 
     const decodedUri = decodeURIComponent(request.url);
 
@@ -72,7 +71,7 @@ export class ApgEdrParamsService extends Drash.Service {
 
     // Inject the Params data Request into the Drash Request
     (<any>request)[ApgEdrParamsService.INJECTED_FIELD_NAME] = r;
-    
+
   }
 
 }

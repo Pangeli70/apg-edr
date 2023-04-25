@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [Edr]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.8.0 [APG 2022/04/09] Implemented mime types
  * @version 0.9.1 [APG 2022/09/10] Github Beta
@@ -55,6 +55,7 @@ export class ApgEdrAssetsTextFileResource extends ApgEdrStaticResource {
 
     const maxAge = ApgEdrService.ClientTxtMaxAgeSeconds;
     response.headers.append("Cache-Control", `private, max-age=${maxAge}, immutable`);
+    response.headers.append("Content-Type", `utf-8`);
 
   }
 

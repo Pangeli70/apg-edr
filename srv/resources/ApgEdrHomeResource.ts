@@ -10,9 +10,9 @@ export class ApgEdrHomeResource extends Drash.Resource {
 
     public override  paths = ["/"];
 
-    public async GET(_request: Drash.Request, response: Drash.Response) {
+    public GET(_request: Drash.Request, response: Drash.Response) {
 
-        this.redirect("/assets/html/test.html", response);
+        this.redirect("assets/html/test.html", response);
 
     }
 

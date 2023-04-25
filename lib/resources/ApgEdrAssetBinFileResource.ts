@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [Edr]
+ * @module [Edr/lib]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.8.0 [APG 2022/04/03]
  * @version 0.9.1 [APG 2022/09/10] Github Beta
@@ -36,6 +36,9 @@ export class ApgEdrAssetBinFileResource extends ApgEdrStaticResource {
         break;
       case 'png':
         type = 'image/png'
+        break;
+      case 'gif':
+        type = 'image/gif'
         break;
       case 'pdf':
         type = 'application/pdf'

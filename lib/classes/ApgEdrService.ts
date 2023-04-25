@@ -15,10 +15,10 @@ export class ApgEdrService {
     private static readonly _assetsCache: Map<string, IApgEdrCacheableAsset> = new Map();
 
     /** The assets folder */
-    private static _assetsFolder = Deno.cwd() + "/srv/assets";
+    private static _assetsFolder = "./srv";
 
     /** The assets cache max age in milliseconds */
-    private static _assetsMaxAge = 5 * 60; // 5 min;
+    private static _assetsMaxAge = 5 * 60 * 1000; // 5 min;
 
     /** Response header max age for binary files like images */
     private static _clientBinMaxAge = 1 * 60; // 30 min;
