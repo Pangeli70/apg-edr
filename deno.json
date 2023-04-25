@@ -3,6 +3,7 @@
     "noImplicitOverride": true
   },
   "tasks": {
-    "cache": "deno cache --reload deps.ts"
+    "run": "deno run -A --unstable --watch server.ts",
+    "cache": "deno cache --reload ./srv/deps.ts"
   }
 }
