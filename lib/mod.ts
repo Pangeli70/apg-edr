@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [Edr/lib] Enhanced Drash resources
+ * @module [Edr/lib] Enhanced Drash Resources
  * @author [APG] ANGELI Paolo Giusto
  * -----------------------------------------------------------------------
 */
@@ -23,4 +23,4 @@ export * from "./services/ApgEdrEveryReqService.ts";
 export * from "./services/ApgEdrParamsService.ts";
 export * from "./services/ApgEdrLoggableService.ts";
 
-export type { TApgEdrParam } from "./types/TApgEdrParam.ts"
+export type { TApgEdrPrimitiveParam } from "./types/TApgEdrTypes.ts"
