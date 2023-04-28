@@ -18,7 +18,7 @@ import { IApgEdrCacheableAsset } from "../interfaces/IApgEdrCacheableAsset.ts";
 export abstract class ApgEdrStaticResource extends Drash.Resource {
 
   async #processAsset(aresourceFile: string, aistext: boolean) {
-
+    let stats = "";
     let r: string | Uint8Array;
     try {
       const cached = ApgEdrService.AssetsCache.get(aresourceFile);
@@ -35,10 +35,12 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
           isText: aistext,
           lastRequest: performance.now()
         }
+        stats = "->cache"
         ApgEdrService.AssetsCache.set(aresourceFile, newCached);
       }
       else {
 
+        stats = "<-cache"
         const currentTime = performance.now();
         const deltaTime = currentTime - cached.lastRequest;
 
@@ -48,6 +50,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
             await Deno.readFile(aresourceFile);
           cached.content = r;
           cached.updated++;
+          stats = "<-cache+"
         }
 
         cached.retrieved++;
@@ -55,7 +58,7 @@ export abstract class ApgEdrStaticResource extends Drash.Resource {
         r = cached.content;
 
       }
-
+      console.log(aresourceFile, stats);
       return r;
 
     } catch (error) {

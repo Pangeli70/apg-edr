@@ -11,7 +11,7 @@ import { Drash} from "../deps.ts";
 import { eApgEdrParamTypes } from "../enums/eApgEdrParamTypes.ts";
 import { IApgEdrRequestParams } from "../interfaces/IApgEdrRequestParams.ts";
 import { ApgEdrParamsService } from "../services/ApgEdrParamsService.ts";
-import { TApgEdrParam } from "../types/TApgEdrParam.ts";
+import { TApgEdrPrimitiveParam } from "../types/TApgEdrTypes.ts";
 
 
 export abstract class ApgEdrResource extends Drash.Resource {
@@ -19,16 +19,18 @@ export abstract class ApgEdrResource extends Drash.Resource {
 
   getEdrParams(request: Drash.Request) {
     // deno-lint-ignore no-explicit-any
-    return (<IApgEdrRequestParams>(<any>request)[ApgEdrParamsService.INJECTED_FIELD_NAME]);
+    const params = (<IApgEdrRequestParams>(<any>request)[ApgEdrParamsService.REQUEST_PARAMS]);
+    
+    return params;
   }
 
   protected getQueryStringParam(
     request: Drash.Request,
     aname: string,
     atype: eApgEdrParamTypes
-  ): TApgEdrParam {
+  ): TApgEdrPrimitiveParam {
 
-    let r: TApgEdrParam = null;
+    let r: TApgEdrPrimitiveParam = null;
 
     const param = request.queryParam(aname);
     if (param && typeof (param) == 'string') {
@@ -41,9 +43,9 @@ export abstract class ApgEdrResource extends Drash.Resource {
     request: Drash.Request,
     aname: string,
     atype: eApgEdrParamTypes
-  ): TApgEdrParam {
+  ): TApgEdrPrimitiveParam {
 
-    let r: TApgEdrParam = null;
+    let r: TApgEdrPrimitiveParam = null;
 
     const param = request.bodyParam(aname);
 
@@ -58,9 +60,9 @@ export abstract class ApgEdrResource extends Drash.Resource {
     request: Drash.Request,
     aname: string,
     atype: eApgEdrParamTypes
-  ): TApgEdrParam {
+  ): TApgEdrPrimitiveParam {
 
-    let r: TApgEdrParam = null;
+    let r: TApgEdrPrimitiveParam = null;
 
     const param = request.getCookie(aname);
 
@@ -76,9 +78,9 @@ export abstract class ApgEdrResource extends Drash.Resource {
     request: Drash.Request,
     aname: string,
     atype: eApgEdrParamTypes
-  ): TApgEdrParam {
+  ): TApgEdrPrimitiveParam {
 
-    let r: TApgEdrParam = null;
+    let r: TApgEdrPrimitiveParam = null;
 
     const param = request.pathParam(aname);
 
@@ -92,9 +94,9 @@ export abstract class ApgEdrResource extends Drash.Resource {
    #checkParamType(
     param: string | null,
     atype: eApgEdrParamTypes
-  ): TApgEdrParam {
+  ): TApgEdrPrimitiveParam {
 
-    let r: TApgEdrParam = null;
+    let r: TApgEdrPrimitiveParam = null;
     if (param !== null) {
       switch (atype) {
         case eApgEdrParamTypes.STRING: {

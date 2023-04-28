@@ -9,9 +9,13 @@
 import { Drash, Uts } from "../deps.ts";
 import { IApgEdrEveryRequest } from "../interfaces/IApgEdrEveryRequest.ts";
 
+
+/**
+ * A service  to report on console every arriving request and its total processing time
+ */
 export class ApgEdrEveryReqService extends Drash.Service {
 
-    public static INJECTED_FIELD_NAME = "ApgEdrEveryRequest";
+    public static readonly EVERY_REQUEST = "IApgEdrEveryRequest";
 
     private static _counter = 0;
 
@@ -23,17 +27,18 @@ export class ApgEdrEveryReqService extends Drash.Service {
         ApgEdrEveryReqService._counter++;
         const dateTimeStamp = new Uts.ApgUtsDateTimeStamp(new Date()).Value;
         console.log(
-            `${dateTimeStamp} Received request #${ApgEdrEveryReqService._counter} for resource:\n - ${request.url}`,
+            `#${ApgEdrEveryReqService._counter} | ${dateTimeStamp} | ${request.url}`,
         );
 
         const every: IApgEdrEveryRequest = {
             number: ApgEdrEveryReqService._counter,
             startTime: performance.now(),
-            submission: new Date()
+            submission: new Date(),
+            url: request.url 
         };
 
         // inject middleware data into the request
-        (<any>request)[ApgEdrEveryReqService.INJECTED_FIELD_NAME] = every;
+        (<any>request)[ApgEdrEveryReqService.EVERY_REQUEST] = every;
     }
 
 
@@ -44,10 +49,10 @@ export class ApgEdrEveryReqService extends Drash.Service {
         request: Drash.Request,
         _response: Drash.Response,
     ): void {
-        const every: IApgEdrEveryRequest = (<any>request)[ApgEdrEveryReqService.INJECTED_FIELD_NAME];
+        const every: IApgEdrEveryRequest = (<any>request)[ApgEdrEveryReqService.EVERY_REQUEST];
         const t2: number = performance.now();
         const elapsed = t2 - every.startTime;
         const proctime = elapsed.toFixed(4);
-        console.log(` Request [${every.number}] total processing time: ${proctime}ms.`);
+        console.log(`#${every.number} | ${proctime}ms`);
     }
 }

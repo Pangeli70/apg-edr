@@ -10,7 +10,7 @@
 import { Drash, Lgr, Rst, Uts } from "../deps.ts";
 import { ApgEdrResource } from "./ApgEdrResource.ts";
 import { ApgEdrLoggableService } from "../services/ApgEdrLoggableService.ts";
-import { IApgEdrLoggableRequest } from "../interfaces/IApgEdrLoggableRequest.ts";
+
 
 /**
  * A base Resource with logging capabilities
@@ -21,14 +21,19 @@ export abstract class ApgEdrLoggableResource extends ApgEdrResource {
 
   protected logInit(aimportMetaUrl: string, request: Drash.Request) {
     const className = new Uts.ApgUtsMetaUrl(aimportMetaUrl).FileName;
-    const loggableReq = this.#getlogger(request);
-    this.loggable = new Lgr.ApgLgrLoggable(className, loggableReq.logger);
+    const logger = this.#getLogger(request, className);
+    this.loggable = new Lgr.ApgLgrLoggable(className, logger);
   }
 
 
-  #getlogger(request: Drash.Request) {
-    // deno-lint-ignore no-explicit-any
-    return (<IApgEdrLoggableRequest>(<any>request)[ApgEdrLoggableService.INJECTED_FIELD_NAME]);
+  #getLogger(request: Drash.Request, aclassName: string) {
+
+    const logger = (<any>request)[ApgEdrLoggableService.LOGGER] as Lgr.ApgLgr;
+    // TODO replace with Rst assert
+    if (logger == undefined) {
+      throw new Error(aclassName + ", needs a logger coming from ApgEdrLoggableService, check list of Drash services;")
+    }
+    return logger;
   }
 
   protected logBegin(amethodName: string, amessage?: string) {

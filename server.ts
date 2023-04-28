@@ -5,7 +5,7 @@
  * @version 0.9.7 [APG 2023/04/25] Separation of concerns lib/srv
  * -----------------------------------------------------------------------
  */
-import { Drash, Dir, Uts } from "./srv/deps.ts";
+import { Drash, Dir, Uts, Lgr } from "./srv/deps.ts";
 import { resources } from "./srv/res.ts";
 import { services } from "./srv/svc.ts";
 import { ApgEdrService } from "./lib/mod.ts";
@@ -13,6 +13,9 @@ import { ApgEdrService } from "./lib/mod.ts";
 ApgEdrService.Init({
   assetsFolder:"./srv"
 });
+
+
+Lgr.ApgLgr.AddConsoleTransport();
 
 const SERVER_INFO = Dir.ApgDirGetServerInfo(Dir.ApgDirEntries[Dir.eApgDirEntriesIds.edr]);
 

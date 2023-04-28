@@ -15,11 +15,12 @@ import { IApgEdrRequestParams } from "../interfaces/IApgEdrRequestParams.ts";
  */
 export class ApgEdrParamsService extends Drash.Service {
 
-  public static INJECTED_FIELD_NAME = "ApgEdrParams";
+  public static readonly REQUEST_PARAMS = "IApgEdrRequestParams";
 
   public override runBeforeResource(
     request: Drash.Request,
-    _response: Drash.Response) {
+    _response: Drash.Response
+  ) {
 
     const decodedUri = decodeURIComponent(request.url);
 
@@ -69,8 +70,8 @@ export class ApgEdrParamsService extends Drash.Service {
       cookieParams: cookieParams
     };
 
-    // Inject the Params data Request into the Drash Request
-    (<any>request)[ApgEdrParamsService.INJECTED_FIELD_NAME] = r;
+    // Inject the Params carried by the client's request into the current Drash Request
+    (<any>request)[ApgEdrParamsService.REQUEST_PARAMS] = r;
 
   }
 
