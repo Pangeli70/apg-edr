@@ -47,7 +47,7 @@ export class ApgEdrLoggableService extends Drash.Service {
 
   }
 
-  public override runAfterResource(request: Drash.Request, _response: Drash.Response) {
+  public override async runAfterResource(request: Drash.Request, _response: Drash.Response) {
 
     const every = (<any>request)[ApgEdrEveryReqService.EVERY_REQUEST] as IApgEdrEveryRequest;
     every.endTime = performance.now();
@@ -63,6 +63,7 @@ export class ApgEdrLoggableService extends Drash.Service {
     const loggable = (<any>request)[ApgEdrLoggableService.LOGGABLE] as Lgr.ApgLgrLoggable;
     loggable!.logEnd(status);
     const logger = (<any>request)[ApgEdrLoggableService.LOGGER] as Lgr.ApgLgr;
-    logger!.flush();
+    const flushTime =  await logger!.flush();
+    console.log(flushTime)
   }
 }

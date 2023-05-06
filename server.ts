@@ -14,11 +14,9 @@ ApgEdrService.Init({
   assetsFolder:"./srv"
 });
 
-
 Lgr.ApgLgr.AddConsoleTransport();
 
 const SERVER_INFO = Dir.ApgDirGetServerInfo(Dir.ApgDirEntries[Dir.eApgDirEntriesIds.edr]);
-
 
 const server = new Drash.Server({
   hostname: '0.0.0.0',
