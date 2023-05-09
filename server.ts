@@ -1,5 +1,5 @@
 /** -----------------------------------------------------------------------
- * @module [Edr] Enhanced Drash Resources
+ * @module [apg-edr] 
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.9.1 [APG 2022/09/18] Deno Deploy Beta
  * @version 0.9.7 [APG 2023/04/25] Separation of concerns lib/srv
