@@ -8,6 +8,10 @@
  * @version 0.9.7 [APG 2023/04/25] Separation of concerns lib/srv
  * -----------------------------------------------------------------------
  */
+
+/**
+ * Incoming parameters types from querystring, paths, bodies and cookies
+ */
 export enum eApgEdrParamTypes {
     STRING = "string",
     FLOAT = "float",

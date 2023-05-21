@@ -7,8 +7,9 @@
 
 import { IApgEdrCacheableAsset } from "../interfaces/IApgEdrCacheableAsset.ts";
 
-
-/** Contains configuration parameters of the Edr */
+/**
+ * Contains configuration parameters of the Edr 
+ */
 export class ApgEdrService {
 
     /** The cache of the assets or static resources like files for images etc. */

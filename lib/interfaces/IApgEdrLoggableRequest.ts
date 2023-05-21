@@ -11,7 +11,9 @@
 import { Lgr } from '../deps.ts';
 
 
-/** Additional data used by Drash service and that is carried by the Drash.Request */
+/**
+ * Data structure injected in the Drash request for storing data for the ApgEdrLoggableService
+ */
 export interface IApgEdrLoggableRequest {
 
   /** The reference to the injected request logger */

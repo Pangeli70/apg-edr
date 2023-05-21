@@ -12,16 +12,19 @@
 import { IApgEdrLoggableRequest } from "./IApgEdrLoggableRequest.ts";
 
 interface IApgAthTokenPayload { 
-  // TODO implement 
+  // TODO implement in Auth module this is only a stub
   dummy: string;
 }
 
 enum eApgAthRoles { 
+  // TODO implement in Auth module this is only a stub
   dummy = "dummy"
 }
 
 
-/** The additional data used by Edr and that is carried by the Drash.Request */
+/**
+ * Data structure injected in the Drash request for storing Authentication/authorization data for the ApgEdrAuthService
+ */
 export interface IApgEdrProtectedRequest extends IApgEdrLoggableRequest {
 
   /** The current token payload */

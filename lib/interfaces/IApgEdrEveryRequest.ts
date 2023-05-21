@@ -11,6 +11,9 @@ import { Uts } from "../deps.ts";
 export const IApgEdrEveryRequestSymbol = Symbol(new Uts.ApgUtsMetaUrl(import.meta.url).FileName);
 export const IApgEdrEveryRequestSignature = new Uts.ApgUtsMetaUrl(import.meta.url).FileName;
 
+/**
+ * Data structure injected in the Drash request for storing data for the ApgEdrEveryReqService
+ */
 export interface IApgEdrEveryRequest {
   number: number;
   startTime: number;
