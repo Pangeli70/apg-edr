@@ -25,7 +25,7 @@ export class ApgEdrEveryReqService extends Drash.Service {
     ): void {
 
         ApgEdrEveryReqService._counter++;
-        const dateTimeStamp = new Uts.ApgUtsDateTimeStamp(new Date()).Value;
+        const dateTimeStamp = new Uts.ApgUtsDateTimeStamp(new Date()).Stamp;
         console.log(
             `#${ApgEdrEveryReqService._counter} | ${dateTimeStamp} | ${request.url}`,
         );

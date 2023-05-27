@@ -4,12 +4,17 @@
  * @version 0.9.7 [APG 2023/04/25] Separation of concerns lib/srv
  * ------------------------------------------------------------------------
 */
-import { Drash } from "./deps.ts";
-import * as Edr from "../lib/mod.ts"
+import { Edr } from "./deps.ts";
 import { ApgEdrHomeResource } from "./resources/ApgEdrHomeResource.ts";
 
+export const ApgEdrServices: Edr.Drash.Service[] = [
+    new Edr.Drash.CORSService(),
+    new Edr.ApgEdrEveryReqService(),
+    new Edr.ApgEdrLoggableService(),
+    new Edr.ApgEdrParamsService()
+];
 
-export const resources: typeof Drash.Resource[] = [
+export const ApgEdrResources: typeof Edr.Drash.Resource[] = [
 
     // Static
     Edr.ApgEdrAssetBinFileResource,
